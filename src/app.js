@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/", index);
-app.use("/inicio", inicio);
+app.use("/inicio", inicio); 
 app.use("/professores", professoresRouter);
 
 module.exports = app;

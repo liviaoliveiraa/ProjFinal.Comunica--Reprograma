@@ -1,8 +1,8 @@
 const app = require("./src/app");
-port = process.env.port || 8080
+PORT = process.env.PORT || 8080
 
-app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`)
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`)
 })
 
 

@@ -7,8 +7,14 @@ const connect = () => {mongoose.connect(MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-    .then(console.log("Database conectado com sucessso."))
-    .catch(err => console.err)
+.then(()=>{
+    console.log("Conectadas bb no MongoDb Atlas")
+})
+.catch((error)=>{
+    console.log("Algo deu errado")
+    console.error(error)
+})
 }
 
-module.exports = {connect} //exportando função {}
+module.exports = { connect }
+//exportando função {}

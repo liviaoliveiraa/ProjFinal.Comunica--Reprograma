@@ -6,4 +6,5 @@ router.get('/', controller.getAll) //ok
 router.post('/', controller.createProfessor) //ok
 router.delete('/:id', controller.deleteProfessor)
 
+
 module.exports = router;
