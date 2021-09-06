@@ -23,7 +23,8 @@ const createInfo = async (req, res) => {
         _id: mongoose.Schema.Types.ObjectId,
         descrição : req.body.descrição,
         tarefa: req.body.tarefa,
-        dataProva: req.body.dataProva
+        dataProva: req.body.dataProva,
+        materia: req.body.materia //coloca o id da materia
     })
     try{
         const newInfo = await info.save()
