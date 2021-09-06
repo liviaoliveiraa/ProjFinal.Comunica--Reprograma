@@ -25,7 +25,7 @@ const getInfoById = async (req, res) => {
 
 const createInfo = async (req, res) => {
     const info = new infoMaterias({
-        _id: mongoose.Schema.Types.ObjectId,
+        _id: new mongoose.Types.ObjectId(),
         descrição : req.body.descrição,
         tarefa: req.body.tarefa,
         dataProva: req.body.dataProva,
