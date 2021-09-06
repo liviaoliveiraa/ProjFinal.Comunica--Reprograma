@@ -4,10 +4,9 @@ const controller = require("../controllers/materiasControllers");
 
 router.get("/", controller.start); //ok
 router.get("/materia", controller.getAll) //ok
-router.get("/materia/:materia", controller.getByMateria); //ok 
-router.get("/periodo/:periodo", controller.getByPeriodo); //ok
+router.get("/materia/:materia", controller.getByMateria); //ok
 router.get("/id/:id", controller.getById) //ok 
-router.get("/ano/:ano", controller.getByAno)
+router.get("/ano/:ano", controller.getByAno) //ok
 router.delete("/:id", controller.deleteById)//ok
 router.post('/create', controller.createMateria)//ok
 

@@ -25,17 +25,6 @@ const getByMateria = async (req, res) => {
     
 };
 
-const getByPeriodo = async (req, res) => {
-    const requestedPeriodo = req.params.periodo
-    const filteredPeriodo = await Materias.find({periodo: requestedPeriodo})
-
-    if(filteredPeriodo){
-        res.status(200).json(filteredPeriodo)
-    } else {
-        res.status(404).send() //nao entra aqui
-    }
-}
-
 const getByAno = async (req, res) => {
     const requestedAno = req.params.ano
     const filteredAno = await Materias.find({ano: requestedAno})
@@ -103,5 +92,5 @@ const deleteById = async (req, res) => {
 }
 
 
-module.exports = {start, getAll, createMateria, getByMateria, getByPeriodo, getById, deleteById, getByAno}
+module.exports = {start, getAll, createMateria, getByMateria, getById, deleteById, getByAno}
 
