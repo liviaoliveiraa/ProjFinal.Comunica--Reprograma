@@ -7,6 +7,11 @@ const rules = (req, res) => {
     })
 }
 
+const getAll = async (req, res) => {
+    const infoMateria = await infoMaterias.find().populate('materia')
+    res.status(200).json(infoMateria)
+}
+
 const getInfoById = async (req, res) => {
     const requestedId = req.params.id;
     const filteredId = await infoMaterias.find({id: requestedId})
@@ -34,4 +39,4 @@ const createInfo = async (req, res) => {
     }
 }
 
-module.exports = {rules, getInfoById, createInfo}
+module.exports = {rules, getAll, getInfoById, createInfo}
