@@ -9,30 +9,28 @@ const start = (req, res) => {
 }
 
 const getAll = async (req, res) => {
-    const materia = await Materias.find()
-    res.status(200).json(materia)
+    const materias = await Materias.find()
+    res.status(200).json(materias)
 }
 
-//OK TA FUNCIONANDO 
 const getByMateria = async (req, res) => {
     const requestedMateria = req.params.materia;
-    const materia = await Materias.find({materia: requestedMateria});
+    const filteredMateria = await Materias.find({materia: requestedMateria});
 
-    if(materia){
-        res.json(materia)
+    if(filteredMateria){
+        res.json(filteredMateria)
     } else {
         res.status(404).send() //nao entra aqui
     }
     
 };
 
-//OK TA FUNCIONANDO 
 const getByPeriodo = async (req, res) => {
     const requestedPeriodo = req.params.periodo
-    const periodo = await Materias.find({periodo: requestedPeriodo})
+    const filteredPeriodo = await Materias.find({periodo: requestedPeriodo})
 
-    if(periodo){
-        res.status(200).json(periodo)
+    if(filteredPeriodo){
+        res.status(200).json(filteredPeriodo)
     } else {
         res.status(404).send() //nao entra aqui
     }
@@ -45,11 +43,10 @@ const getByAno = async (req, res) => {
     if(filteredAno){
         res.status(200).json(filteredAno)
     } else {
-        res.status(404).send({message: "ano não encontrado"})
+        res.status(404).send({message: "Ano não encontrado."})
     }
 }
 
-//OK TA FUNCIONANDO
 const getById = (req, res) => {
     const requestedId = req.params.id;
     Materias.findOne({id: requestedId}, function (err, estruturasFounded){
@@ -66,7 +63,6 @@ const getById = (req, res) => {
     
 }
 
-//Preciso verificar, pois tenho que fazer alteraçoes 
 const createMateria = async (req, res) => {
     const materia = new Materias({
         _id: new mongoose.Types.ObjectId(),
@@ -95,11 +91,11 @@ const deleteById = async (req, res) => {
     try{
         const materia = await Materias.findById(req.params.id)
         if(materia == null){
-            return res.status(404).json({message: "Matéria não encontrada"})
+            return res.status(404).json({message: "ID não encontrada"})
         }
 
         materia.remove()
-        res.status(200).json({message: "Matéria deletada"}) 
+        res.status(200).json({message: "ID da matéria informado foi deletada com sucesso."}) 
 
     } catch (err){
         res.status(500).json({message: message.err})
