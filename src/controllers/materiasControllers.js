@@ -9,17 +9,17 @@ const start = (req, res) => {
 }
 
 const getAll = async (req, res) => {
-    const materias = await Materias.find()
-    res.status(200).json(materias)
+    const materia = await Materias.find()
+    res.status(200).json(materia)
 }
 
 //OK TA FUNCIONANDO 
-const getByDisciplina = async (req, res) => {
-    const requestedDisciplina = req.params.disciplina;
-    const disciplina = await Materias.find({disciplina: requestedDisciplina});
+const getByMateria = async (req, res) => {
+    const requestedMateria = req.params.materia;
+    const materia = await Materias.find({materia: requestedMateria});
 
-    if(disciplina){
-        res.json(disciplina)
+    if(materia){
+        res.json(materia)
     } else {
         res.status(404).send() //nao entra aqui
     }
@@ -35,6 +35,17 @@ const getByPeriodo = async (req, res) => {
         res.status(200).json(periodo)
     } else {
         res.status(404).send() //nao entra aqui
+    }
+}
+
+const getByAno = async (req, res) => {
+    const requestedAno = req.params.ano
+    const filteredAno = await Materias.find({ano: requestedAno})
+
+    if(filteredAno){
+        res.status(200).json(filteredAno)
+    } else {
+        res.status(404).send({message: "ano não encontrado"})
     }
 }
 
@@ -96,5 +107,5 @@ const deleteById = async (req, res) => {
 }
 
 
-module.exports = {start, getAll, createMateria, getByDisciplina, getByPeriodo, getById, deleteById}
+module.exports = {start, getAll, createMateria, getByMateria, getByPeriodo, getById, deleteById, getByAno}
 
