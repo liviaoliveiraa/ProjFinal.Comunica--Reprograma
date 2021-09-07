@@ -10,27 +10,10 @@ const start = (req, res) => {
     });
 }
 
-//EXCLUIR LINHA16 ATE 29 - NAO QUERO AUTENTICAÇÃO NA GETALL
-
 const getAll = async (req, res) => {
 
-    const authHeader = req.get('authorization');
-    const token = authHeader.split(' ')[1]
-
-    if(!token){
-        return res.status(403).send({message: "Por gentileza informar autorização"})
-    }
-
-    jwt.verify(token, SECRET, async (err) => {
-        if(err){
-        res.status(403).send({message: "token inválido", err})
-        }
-        const materias = await Materias.find()
-        res.status(200).json(materias)
-    })
-
-    //const materias = await Materias.find()
-    //res.status(200).json(materias)
+    const materias = await Materias.find()
+    res.status(200).json(materias)
 }
 
 const getByMateria = async (req, res) => {
@@ -40,7 +23,7 @@ const getByMateria = async (req, res) => {
     if(filteredMateria){
         res.json(filteredMateria)
     } else {
-        res.status(404).send() //nao entra aqui
+        res.status(404).send() 
     }
     
 };
@@ -110,7 +93,6 @@ const createMateria = async (req, res) => {
     }
 }
 
-//Ta funcionando
 const deleteById = async (req, res) => {
 
     const authHeader = req.get('authorization');
