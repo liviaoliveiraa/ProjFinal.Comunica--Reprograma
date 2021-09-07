@@ -4,7 +4,8 @@ const controller = require("../controllers/infoMateriasController")
 
 router.get('/', controller.rules)
 router.get('/teste', controller.getAll)//quero tirar
-router.get('/:id', controller.getInfoById)
+router.get('/id/:id', controller.getInfoById)
+router.get('/materia/:id', controller.getInfoByMateria)
 router.post('/create', controller.createInfo)
 
 module.exports = router;

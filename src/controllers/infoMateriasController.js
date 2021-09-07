@@ -26,6 +26,17 @@ const getInfoById = async (req, res) => {
     }
 }
 
+const getInfoByMateria = async (req, res) => {
+    const requestedMateria = req.params.materia;
+    const filteredMateria = await infoMaterias.find({materia: requestedMateria})
+
+    if(filteredMateria){
+        res.json(filteredMateria)
+    } else {
+        res.status(404).send({message: "Matéria não encontrada"})
+    }
+}
+
 const createInfo = async (req, res) => {
     const authHeader = req.get('authorization');
     const token = authHeader.split(' ')[1]
@@ -59,4 +70,4 @@ const createInfo = async (req, res) => {
     }
 }
 
-module.exports = {rules, getAll, getInfoById, createInfo}
+module.exports = {rules, getAll, getInfoById, createInfo, getInfoByMateria}
