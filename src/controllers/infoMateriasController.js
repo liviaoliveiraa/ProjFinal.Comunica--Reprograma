@@ -10,31 +10,15 @@ const rules = (req, res) => {
 }
 
 //teste - nao quero
-const getAll =  (req, res) => {
-    infoMaterias.find(function(err, materiasFounded){
-        if(err){
-            res.status(500).send({message: err.message})
-        } else {
-            if(materiasFounded && materiasFounded.length > 0){
-                res.status(200).send(materiasFounded)
-            } else {
-                res.status(204).send()
-            }
-        }
-    
-    })
-    
-    
-    
-    
-    //const infoMateria = await infoMaterias.find().populate('materia')
-    //res.status(200).json(infoMaterias)
+const getAll = async (req, res) => {
+    const infoMateria = await infoMaterias.find().populate('materia')
+    res.status(200).json(infoMateria)
 }
 
 const getInfoById = async (req, res) => {
 
     const requestedMateria = req.params.materia;
-    console.log(requestedMateria)
+
     infoMaterias.findOne({materia: requestedMateria}, function (err, idFounded){
         if(err){
             res.staus(500).send({menssagem: err.message})
