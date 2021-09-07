@@ -3,6 +3,8 @@ const Materias = require("../models/materias");
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET
 
+//COLOCAR TUDO ORDENADO POR ANO !!!
+
 const start = (req, res) => {
     res.status(200).send({
         "Instrução": "Para verificar o plano de aula dos professores separamos por categoria de acordo com cada matéria",
@@ -81,7 +83,7 @@ const createMateria = async (req, res) => {
     })
 
     //POR ENQUANTO NAO TEM COMO ADD CASO EXISTA, POIS NAO TEM UM PARAMETRO ESPECIFICO
-    //const modelExistente = await Models.findOne({materia: req.body.materia})
+    //const modelExistente = await Models.findOne({materia: req.body.materia} && )
     //if(modelExistente){
         //return res.status(409).json({error: 'materia já cadastrada'})
     //}

@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Professores = require("../models/professores")
+const jwt = require("jsonwebtoken");
+const SECRET = process.env.SECRET
 
 const getAll = async (req, res) => {
   const professores = await Professores.find().populate('materia')
@@ -11,7 +13,7 @@ const createProfessor = async (req, res) => {
   const authHeader = req.get('authorization');
   const token = authHeader.split(' ')[1]
 
-  if(!token){
+  if(authHeader == undefined){
     return res.status(403).send({message: "Por gentileza informar autorização"})
   }
 
@@ -68,7 +70,7 @@ const deleteProfessor = async (req, res) => {
     res.status(200).json({message: "Professor removido com sucesso"})
 
   } catch(err){
-    res.status(500).json({message:err.message})
+    res.status(500).json({message: "Erro inexperado", err})
   }
 }
 

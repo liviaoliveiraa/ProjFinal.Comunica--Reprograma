@@ -55,7 +55,7 @@ const createInfo = async (req, res) => {
         res.json(newInfo)
 
     } catch (err){
-        res.status(400).json({message: "Err inexperado", err})
+        res.status(400).json({message: "Erro inexperado", err})
     }
 }
 
