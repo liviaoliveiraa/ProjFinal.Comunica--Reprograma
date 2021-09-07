@@ -26,13 +26,15 @@ const getInfoById = async (req, res) => {
 const createInfo = async (req, res) => {
     const info = new infoMaterias({
         _id: new mongoose.Types.ObjectId(),
-        descrição : req.body.descrição,
+        descricao : req.body.descricao,
         tarefa: req.body.tarefa,
         dataProva: req.body.dataProva,
         materia: req.body.materia //coloca o id da materia
     })
+    console.log(info)
     try{
         const newInfo = await info.save()
+        console.log(newInfo)
         res.json(newInfo)
     } catch (err){
         res.status(400).json({message: message.err})

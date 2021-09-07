@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
+require('dotenv-safe').config();
 const db = require("../src/data/database")
 const index = require("./routers/index");
 const inicio = require("./routers/materias.router");
