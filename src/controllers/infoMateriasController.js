@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const infoMaterias = require("../models/infoMaterias");
+const jwt = require("jsonwebtoken")
+const SECRET = process.env.SECRET
 
 const rules = (req, res) => {
     res.status(200).send({
@@ -53,7 +55,7 @@ const createInfo = async (req, res) => {
         res.json(newInfo)
 
     } catch (err){
-        res.status(400).json({message: message.err})
+        res.status(400).json({message: "Err inexperado", err})
     }
 }
 
