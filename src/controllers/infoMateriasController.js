@@ -16,25 +16,20 @@ const getAll = async (req, res) => {
 }
 
 const getInfoById = async (req, res) => {
-    const requestedId = req.params.id;
-    const filteredId = await infoMaterias.find({id: requestedId})
 
-    if(filteredId){
-        res.json(filteredId)
-    } else {
-        res.status(404).send({message: "Matéria não encontrada"})
-    }
-}
-
-const getInfoByMateria = async (req, res) => {
     const requestedMateria = req.params.materia;
-    const filteredMateria = await infoMaterias.find({materia: requestedMateria})
-
-    if(filteredMateria){
-        res.json(filteredMateria)
-    } else {
-        res.status(404).send({message: "Matéria não encontrada"})
-    }
+    console.log(requestedMateria)
+    infoMaterias.findOne({materia: requestedMateria}, function (err, idFounded){
+        if(err){
+            res.staus(500).send({menssagem: err.message})
+        } else {
+            if(idFounded){
+                res.status(200).send(idFounded)
+            } else {
+                res.status(204)
+            }
+        }
+    })
 }
 
 const createInfo = async (req, res) => {
@@ -70,4 +65,4 @@ const createInfo = async (req, res) => {
     }
 }
 
-module.exports = {rules, getAll, getInfoById, createInfo, getInfoByMateria}
+module.exports = {rules, getAll, getInfoById, createInfo}
