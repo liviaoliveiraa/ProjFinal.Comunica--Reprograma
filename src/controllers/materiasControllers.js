@@ -10,6 +10,8 @@ const start = (req, res) => {
     });
 }
 
+//EXCLUIR LINHA16 ATE 29 - NAO QUERO AUTENTICAÇÃO NA GETALL
+
 const getAll = async (req, res) => {
 
     const authHeader = req.get('authorization');
