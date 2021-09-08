@@ -82,11 +82,12 @@ const createMateria = async (req, res) => {
         diaEHora: req.body.diaEHora
     })
 
-    //POR ENQUANTO NAO TEM COMO ADD CASO EXISTA, POIS NAO TEM UM PARAMETRO ESPECIFICO
-    //const modelExistente = await Models.findOne({materia: req.body.materia} && )
-    //if(modelExistente){
-        //return res.status(409).json({error: 'materia já cadastrada'})
-    //}
+    const modelExistente = await Models.findOne({materia: req.body.materia} && Models.findOne({ano: req.body.ano}))
+
+    if(modelExistente){
+        return res.status(409).json({error: 'materia já cadastrada'})
+    }
+
     try{
         const novaMateria = await materia.save()
         res.json(novaMateria)

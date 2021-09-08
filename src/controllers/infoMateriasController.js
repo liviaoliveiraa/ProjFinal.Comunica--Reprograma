@@ -14,7 +14,7 @@ const getAll = async (req, res) => {
     res.status(200).json(infoMateria)
 }
 
-const getInfoById = async (req, res) => {
+/*const getInfoById = async (req, res) => {
 
     const requestedId = req.params.id;
 
@@ -22,14 +22,14 @@ const getInfoById = async (req, res) => {
         if(err){
             res.staus(500).send({menssagem: err.message})
         } else {
-            if(idFounded){
+            if(requestedId){
                 res.status(200).send(requestedId)
             } else {
                 res.status(204)
             }
         }
     })
-}
+}*/
 
 const createInfo = async (req, res) => {
     const authHeader = req.get('authorization');
@@ -64,4 +64,36 @@ const createInfo = async (req, res) => {
     }
 }
 
-module.exports = {rules, getAll, getInfoById, createInfo}
+const deleteById = async (req, res) => {
+
+    const authHeader = req.get('authorization');
+    const token = authHeader.split(' ')[1]
+
+    if(!token){
+        return res.status(403).send({message: "Por gentileza informar autorização"})
+    }
+
+    jwt.verify(token, SECRET, async (err)=> {
+        if(err){
+        res.status(403).send({message: "Token inválido"})
+        }
+
+        const infoMateria = await infoMaterias.find()
+        res.json(infoMateria)
+    })    
+
+    try{
+        const materia = await infoMaterias.findById(req.params.id)
+        if(materia == null){
+            return res.status(404).json({message: "ID não encontrada"})
+        }
+
+        materia.remove()
+        res.status(200).json({message: "ID da matéria informado foi deletada com sucesso."}) 
+
+    } catch (err){
+        res.status(500).json({message: message.err})
+    }   
+}
+
+module.exports = {rules, getAll, createInfo, deleteById}
