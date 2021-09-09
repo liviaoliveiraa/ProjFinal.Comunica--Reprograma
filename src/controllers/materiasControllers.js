@@ -3,7 +3,7 @@ const Materias = require("../models/materias");
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET
 
-//COLOCAR TUDO ORDENADO POR ANO !!!
+Materias.sort((a, b) => a.ano - b.ano)
 
 const start = (req, res) => {
     res.status(200).send({

@@ -5,7 +5,7 @@ const SECRET = process.env.SECRET
 
 const rules = (req, res) => {
     res.status(200).send({
-        "Instrução": "Para saber as informações do plano do professor, por favor insira o id da matéria"
+        "Instrução": "Bem vindo ao portal de plano de ensino do professor."
     })
 }
 
@@ -13,23 +13,6 @@ const getAll = async (req, res) => {
     const infoMateria = await infoMaterias.find().populate('materia')
     res.status(200).json(infoMateria)
 }
-
-/*const getInfoById = async (req, res) => {
-
-    const requestedId = req.params.id;
-
-    infoMaterias.findOne({id: requestedId}, function (err, idFounded){
-        if(err){
-            res.staus(500).send({menssagem: err.message})
-        } else {
-            if(requestedId){
-                res.status(200).send(requestedId)
-            } else {
-                res.status(204)
-            }
-        }
-    })
-}*/
 
 const createInfo = async (req, res) => {
     const authHeader = req.get('authorization');
@@ -88,7 +71,7 @@ const deleteById = async (req, res) => {
             return res.status(404).json({message: "ID não encontrada"})
         }
 
-        materia.remove()
+        infoMaterias.remove()
         res.status(200).json({message: "ID da matéria informado foi deletada com sucesso."}) 
 
     } catch (err){
