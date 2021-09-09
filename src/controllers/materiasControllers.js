@@ -3,8 +3,6 @@ const Materias = require("../models/materias");
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET
 
-Materias.sort((a, b) => a.ano - b.ano)
-
 const start = (req, res) => {
     res.status(200).send({
         "Instrução": "Para verificar o plano de aula dos professores separamos por categoria de acordo com cada matéria",
