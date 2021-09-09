@@ -61,12 +61,12 @@ const deleteProfessor = async (req, res) => {
   })
 
   try{
-    const professor = await Professores.findById(req.params.id)
-    if(professor == null){
-      res.status(404).json({message: "Professor não encontrado"})
+    const prof = await Professores.findById(req.params.id)
+    if(prof == null){
+      return res.status(404).json({message: "Professor não encontrado"})
     }
 
-    professor.remove()
+    prof.remove()
     res.status(200).json({message: "Professor removido com sucesso"})
 
   } catch(err){

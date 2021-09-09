@@ -66,12 +66,12 @@ const deleteById = async (req, res) => {
     })    
 
     try{
-        const materia = await infoMaterias.findById(req.params.id)
-        if(materia == null){
-            res.status(404).json({message: "ID não encontrada"})
+        const infmateria = await infoMaterias.findById(req.params.id)
+        if(infmateria == null){
+            return res.status(404).json({message: "ID não encontrada"})
         }
 
-        infoMaterias.remove()
+        infmateria.remove()
         res.status(200).json({message: "ID da matéria informado foi deletada com sucesso."}) 
 
     } catch (err){
