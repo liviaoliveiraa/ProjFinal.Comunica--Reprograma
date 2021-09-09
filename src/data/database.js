@@ -17,4 +17,3 @@ const connect = () => {mongoose.connect(MONGO_URL, {
 }
 
 module.exports = { connect }
-//exportando função {}
