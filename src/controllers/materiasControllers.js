@@ -80,10 +80,6 @@ const createMateria = async (req, res) => {
         diaEHora: req.body.diaEHora
     })
 
-    if(modelExistente){
-        return res.status(409).json({error: 'materia já cadastrada'})
-    }
-
     try{
         const novaMateria = await materia.save()
         res.json(novaMateria)
