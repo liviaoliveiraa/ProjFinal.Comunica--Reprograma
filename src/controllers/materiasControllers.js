@@ -103,7 +103,8 @@ const deleteById = async (req, res) => {
         }
 
         const materias = await Materias.find()
-        res.json("Materia deletada" + materias)
+        res.json({message: "Estudio removido com sucesso"})
+        res.json(materias)
     })    
 
     try{
