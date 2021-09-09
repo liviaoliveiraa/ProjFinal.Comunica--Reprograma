@@ -103,7 +103,7 @@ const deleteById = async (req, res) => {
         }
 
         const materias = await Materias.find()
-        res.json(materias)
+        res.json("Materia deletada" + materias)
     })    
 
     try{
