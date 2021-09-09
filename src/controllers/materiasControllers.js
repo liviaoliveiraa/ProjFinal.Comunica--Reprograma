@@ -80,8 +80,6 @@ const createMateria = async (req, res) => {
         diaEHora: req.body.diaEHora
     })
 
-    const modelExistente = await Models.findOne({materia: req.body.materia} && Models.findOne({ano: req.body.ano}))
-
     if(modelExistente){
         return res.status(409).json({error: 'materia já cadastrada'})
     }
