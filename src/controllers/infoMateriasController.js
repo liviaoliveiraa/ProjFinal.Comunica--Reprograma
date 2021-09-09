@@ -68,7 +68,7 @@ const deleteById = async (req, res) => {
     try{
         const materia = await infoMaterias.findById(req.params.id)
         if(materia == null){
-            return res.status(404).json({message: "ID não encontrada"})
+            res.status(404).json({message: "ID não encontrada"})
         }
 
         infoMaterias.remove()

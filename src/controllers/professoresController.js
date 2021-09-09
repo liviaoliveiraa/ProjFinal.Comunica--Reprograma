@@ -63,7 +63,7 @@ const deleteProfessor = async (req, res) => {
   try{
     const professor = await Professores.findById(req.params.id)
     if(professor == null){
-      return res.status(404).json({message: "Professor não encontrado"})
+      res.status(404).json({message: "Professor não encontrado"})
     }
 
     professor.remove()
