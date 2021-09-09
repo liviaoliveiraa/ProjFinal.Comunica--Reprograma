@@ -103,7 +103,6 @@ const deleteById = async (req, res) => {
         }
 
         const materias = await Materias.find()
-        res.json({message: "Estudio removido com sucesso"})
         res.json(materias)
     })    
 
@@ -115,6 +114,7 @@ const deleteById = async (req, res) => {
 
         materia.remove()
         res.status(200).json({message: "ID da matéria informado foi deletada com sucesso."}) 
+        res.json(materia)
 
     } catch (err){
         res.status(500).json({message: message.err})
