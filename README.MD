@@ -4,7 +4,7 @@
 <a align href = "#Sobre">Sobre</a> │
 <a align href = "#Contexto">Contexto</a> │
 <a align href = "#Regras">Regras</a> │
-<a align href = "#Arquitetuta">Arquitetuta</a> │
+<a align href = "#Arquitetura">Arquitetura</a> │
 <a align href = "#Rotas">Rotas</a> │
 <a align href = "#Tecnologias">Tecnologias</a> │
 <a align href = "#Pacotes">Pacotes</a> │
@@ -34,7 +34,7 @@ Portando o APP Comunica veio para sanar esse GAP da tecnologia nas escolas e apr
 - [x] Somente pessoas com login e senha - que são os professores, podem excluir e postar as informações das matérias;
 - [x] Somente pessoas com login e senha - que são os professores, podem excluir e postar as informações dos professores;
 
-## Arquitetuta
+## Arquitetura
 ```
  📁 Comunica
    |
