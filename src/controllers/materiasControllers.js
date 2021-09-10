@@ -5,8 +5,8 @@ const SECRET = process.env.SECRET
 
 const start = (req, res) => {
     res.status(200).send({
-        "Instrução": "Para verificar o plano de aula dos professores separamos por categoria de acordo com cada matéria",
-        "Instrução 2": "Caso queira ver as matérias por bimestre realizar o filtro"
+        "Instrução 1": "Para verificar o plano de ensino do professor basta informar na URL /materia que mostrara todas as matérias de todos os anos cadastrados.",
+        "Instrução 2": "Caso queira ver as matérias por ano ou por disciplina realize o filtro"
     });
 }
 
@@ -18,7 +18,7 @@ const getAll = async (req, res) => {
 
 const getByMateria = async (req, res) => {
     const requestedMateria = req.params.materia;
-    const filteredMateria = await Materias.find({materia: requestedMateria});
+    const filteredMateria = await Materias.find({materia: requestedMateria})
 
     if(filteredMateria){
         res.json(filteredMateria)
@@ -57,7 +57,7 @@ const getById = (req, res) => {
 
 const createMateria = async (req, res) => {
 
-    const authHeader = req.get('authorization');
+    const authHeader = req.get('authorization')
     const token = authHeader.split(' ')[1]
 
     if(!token){

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Professores = require("../models/professores")
+const Professores = require("../models/professores");
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET
 
@@ -10,7 +10,7 @@ const getAll = async (req, res) => {
 
 const createProfessor = async (req, res) => {
 
-  const authHeader = req.get('authorization');
+  const authHeader = req.get('authorization')
   const token = authHeader.split(' ')[1]
 
   if(authHeader == undefined){
@@ -43,7 +43,7 @@ const createProfessor = async (req, res) => {
 }
 
 const deleteProfessor = async (req, res) => {
-  const authHeader = req.get('authorization');
+  const authHeader = req.get('authorization')
   const token = authHeader.split(' ')[1]
 
   if(!token){

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const infoMaterias = require("../models/infoMaterias");
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET
 
 const rules = (req, res) => {
@@ -15,7 +15,7 @@ const getAll = async (req, res) => {
 }
 
 const createInfo = async (req, res) => {
-    const authHeader = req.get('authorization');
+    const authHeader = req.get('authorization')
     const token = authHeader.split(' ')[1]
 
     if(!token){
@@ -49,7 +49,7 @@ const createInfo = async (req, res) => {
 
 const deleteById = async (req, res) => {
 
-    const authHeader = req.get('authorization');
+    const authHeader = req.get('authorization')
     const token = authHeader.split(' ')[1]
 
     if(!token){

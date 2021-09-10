@@ -1,6 +1,6 @@
-const Usuaria = require('../models/usuarias')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const Usuaria = require('../models/usuarias');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET
 
 const create = async (req, res) => {
