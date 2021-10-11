@@ -1,4 +1,4 @@
-### {reprograma} week 17 - **Comunica** - Projetode finalização do bootcamp :rocket: 
+### {reprograma} week 17 - **Comunica** - Projeto de finalização do bootcamp :rocket: 
 ---
 <p align = "center">
 <a align href = "#Sobre">Sobre</a> │
